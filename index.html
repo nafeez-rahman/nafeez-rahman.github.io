@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Md. Nafeez Rahman — Research Portfolio</title>
+<meta name="description" content="PhD Researcher · Solar PV Specialist · AI Battery Intelligence · Ufa University of Science and Technology"/>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ── RESET & ROOT ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:    #0f1b35;
+  --navy2:   #1b2a4a;
+  --blue:    #1f5fa6;
+  --teal:    #00899e;
+  --teal2:   #00b4cc;
+  --gold:    #d4a017;
+  --green:   #1a7a4a;
+  --burgundy:#8b1a2f;
+  --accent:  #00d4ff;
+  --white:   #ffffff;
+  --off:     #f4f7fc;
+  --lgray:   #e8eef6;
+  --dgray:   #3a4a5c;
+  --text:    #1a2332;
+  --glow:    0 0 24px rgba(0,212,255,0.35);
+  --card-shadow: 0 8px 40px rgba(15,27,53,0.18);
+  --transition: 0.38s cubic-bezier(0.4,0,0.2,1);
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ── SCROLLBAR ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+/* ── ANIMATED BACKGROUND ──────────────────────────────────────── */
+#bg-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+
+/* ── NAV ──────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 64px;
+  background: rgba(15,27,53,0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(0,212,255,0.12);
+  transition: var(--transition);
+}
+nav.scrolled { background: rgba(15,27,53,0.97); }
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.05rem;
+  color: var(--accent); letter-spacing: 0.02em;
+}
+.nav-brand span { color: var(--white); }
+.nav-links {
+  display: flex; gap: 1.8rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: var(--accent);
+  transition: width 0.25s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 1px;
+  transition: var(--transition);
+}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 120px 2rem 80px;
+}
+.hero-inner { max-width: 860px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 99px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2rem;
+  animation: fadeDown 0.8s ease both;
+}
+.hero-badge::before {
+  content: ''; width: 7px; height: 7px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(1.4); }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.9s 0.1s ease both;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero-title {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255,255,255,0.6);
+  font-weight: 400; margin-bottom: 1.8rem;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+.hero-title strong { color: var(--teal2); font-weight: 600; }
+.hero-tagline {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: rgba(255,255,255,0.75);
+  font-weight: 300; line-height: 1.75;
+  max-width: 640px; margin: 0 auto 2.5rem;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 1rem; margin-bottom: 2.5rem;
+  animation: fadeUp 0.9s 0.4s ease both;
+}
+.stat-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; padding: 0.6rem 1.1rem;
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 90px;
+}
+.stat-pill .num {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700; color: var(--accent);
+  line-height: 1;
+}
+.stat-pill .lbl {
+  font-size: 0.7rem; color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px;
+}
+.hero-ctas {
+  display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center;
+  animation: fadeUp 0.9s 0.5s ease both;
+}
+.btn-primary {
+  background: var(--accent); color: var(--navy);
+  font-weight: 700; font-size: 0.85rem;
+  padding: 0.75rem 1.8rem; border-radius: 8px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0,212,255,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.5); }
+.btn-secondary {
+  background: transparent;
+  color: var(--white); font-weight: 600; font-size: 0.85rem;
+  padding: 0.75rem 1.8rem; border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  transition: var(--transition);
+}
+.btn-secondary:hover {
+  border-color: var(--accent); color: var(--accent);
+  transform: translateY(-2px);
+}
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  animation: fadeIn 1s 1.2s ease both;
+}
+.scroll-hint span { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); }
+.scroll-line {
+  width: 1.5px; height: 40px;
+  background: linear-gradient(to bottom, rgba(0,212,255,0.6), transparent);
+  animation: scrollDrop 1.6s ease-in-out infinite;
+}
+@keyframes scrollDrop { 0%,100%{opacity:0;transform:scaleY(0);} 50%{opacity:1;transform:scaleY(1);} }
+
+/* ── SECTION BASE ─────────────────────────────────────────────── */
+section {
+  position: relative; z-index: 1;
+  padding: 100px 2rem;
+}
+.section-light {
+  background: var(--off);
+  color: var(--text);
+}
+.section-dark {
+  background: var(--navy);
+}
+.section-mid {
+  background: #0c1628;
+}
+.container { max-width: 1140px; margin: 0 auto; }
+
+.section-label {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent); margin-bottom: 0.7rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-light .section-title { color: var(--navy2); }
+.section-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+  border-radius: 2px; margin-bottom: 2.5rem;
+}
+
+/* ── ABOUT ────────────────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.about-text p {
+  font-size: 1rem; line-height: 1.85;
+  color: rgba(255,255,255,0.75); margin-bottom: 1.2rem;
+}
+.about-text p strong { color: var(--accent); }
+.about-timeline {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.timeline-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  opacity: 0; transform: translateX(30px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.timeline-item.visible { opacity: 1; transform: translateX(0); }
+.tl-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0; margin-top: 4px;
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.15);
+}
+.tl-content .yr {
+  font-size: 0.72rem; font-weight: 700; color: var(--teal2);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.tl-content .role {
+  font-weight: 600; font-size: 0.88rem; color: var(--white);
+  line-height: 1.3; margin-top: 1px;
+}
+.tl-content .org {
+  font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 1px;
+}
+
+/* ── RESEARCH THEMES ──────────────────────────────────────────── */
+.themes-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 1.5rem;
+}
+.theme-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 2rem;
+  transition: var(--transition);
+  cursor: default;
+  opacity: 0; transform: translateY(30px);
+}
+.theme-card.visible { opacity: 1; transform: translateY(0); }
+.theme-card:hover {
+  border-color: var(--accent);
+  background: rgba(0,212,255,0.04);
+  transform: translateY(-4px);
+  box-shadow: var(--glow);
+}
+.theme-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 1rem;
+}
+.theme-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 0.6rem; line-height: 1.3;
+}
+.theme-card p {
+  font-size: 0.84rem; line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
+.theme-tags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
+}
+.tag {
+  font-size: 0.68rem; font-weight: 600;
+  padding: 0.25rem 0.65rem; border-radius: 99px;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* ── PUBLICATIONS ─────────────────────────────────────────────── */
+.pub-filters {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.filter-btn {
+  font-size: 0.75rem; font-weight: 600;
+  padding: 0.4rem 1rem; border-radius: 99px;
+  border: 1.5px solid rgba(31,95,166,0.4);
+  background: transparent; color: rgba(255,255,255,0.55);
+  cursor: pointer; transition: var(--transition);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--blue); border-color: var(--blue); color: var(--white);
+}
+.pub-list { display: flex; flex-direction: column; gap: 1rem; }
+.pub-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+  padding: 1.2rem 1.4rem;
+  transition: var(--transition);
+  opacity: 0; transform: translateX(-20px);
+}
+.pub-item.visible { opacity: 1; transform: translateX(0); }
+.pub-item:hover {
+  border-left-color: var(--accent);
+  background: rgba(0,212,255,0.03);
+}
+.pub-item[data-type="ieee"] { border-left-color: #1f5fa6; }
+.pub-item[data-type="scopus"] { border-left-color: #d4a017; }
+.pub-item[data-type="springer"] { border-left-color: #1a7a4a; }
+.pub-item[data-type="patent"] { border-left-color: #8b1a2f; }
+.pub-item[data-type="other"] { border-left-color: #00899e; }
+.pub-meta {
+  display: flex; align-items: center; gap: 0.6rem;
+  flex-wrap: wrap; margin-bottom: 0.5rem;
+}
+.pub-badge {
+  font-size: 0.64rem; font-weight: 700;
+  padding: 0.2rem 0.6rem; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.badge-ieee { background: rgba(31,95,166,0.25); color: #7aaad0; }
+.badge-scopus { background: rgba(212,160,23,0.2); color: #e8c45a; }
+.badge-springer { background: rgba(26,122,74,0.25); color: #5cc994; }
+.badge-patent { background: rgba(139,26,47,0.25); color: #e87a8a; }
+.badge-other { background: rgba(0,137,158,0.25); color: #5dd8e8; }
+.pub-year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; color: rgba(255,255,255,0.3);
+}
+.pub-title {
+  font-weight: 600; font-size: 0.9rem;
+  color: var(--white); line-height: 1.4; margin-bottom: 0.3rem;
+}
+.pub-venue {
+  font-size: 0.78rem; color: rgba(255,255,255,0.4);
+  font-style: italic;
+}
+
+/* ── PATENTS ──────────────────────────────────────────────────── */
+.patents-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 1.4rem;
+}
+.patent-card {
+  background: linear-gradient(135deg, rgba(139,26,47,0.15), rgba(139,26,47,0.05));
+  border: 1px solid rgba(139,26,47,0.3);
+  border-radius: 14px; padding: 1.6rem;
+  transition: var(--transition);
+  opacity: 0; transform: scale(0.95);
+}
+.patent-card.visible { opacity: 1; transform: scale(1); }
+.patent-card:hover {
+  border-color: #e87a8a;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(139,26,47,0.2);
+}
+.patent-num {
+  font-family: var(--font-mono); font-size: 0.75rem;
+  color: #e87a8a; margin-bottom: 0.7rem; letter-spacing: 0.04em;
+}
+.patent-name {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 0.95rem;
+  line-height: 1.3; margin-bottom: 0.5rem;
+}
+.patent-desc {
+  font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.6;
+}
+.patent-year {
+  display: inline-block; margin-top: 0.8rem;
+  font-size: 0.72rem; font-weight: 700;
+  color: #8b1a2f; background: rgba(139,26,47,0.15);
+  padding: 0.2rem 0.7rem; border-radius: 99px;
+}
+
+/* ── METRICS DASHBOARD ────────────────────────────────────────── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem; margin-bottom: 3rem;
+}
+.metric-box {
+  background: var(--navy2); border-radius: 14px;
+  padding: 1.6rem; text-align: center;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: var(--transition);
+  opacity: 0; transform: translateY(20px);
+}
+.metric-box.visible { opacity: 1; transform: translateY(0); }
+.metric-box:hover { border-color: var(--accent); transform: translateY(-3px); }
+.metric-number {
+  font-family: var(--font-display);
+  font-size: 2.6rem; font-weight: 800;
+  color: var(--accent); line-height: 1;
+  margin-bottom: 0.4rem;
+  counter-reset: num;
+}
+.metric-label {
+  font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.45);
+  font-weight: 600;
+}
+.chart-bar-container { margin-bottom: 3rem; }
+.chart-row {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.chart-label {
+  width: 200px; font-size: 0.8rem;
+  color: rgba(255,255,255,0.6); flex-shrink: 0;
+  text-align: right;
+}
+.chart-bar-wrap {
+  flex: 1; background: rgba(255,255,255,0.05);
+  border-radius: 99px; height: 10px; overflow: hidden;
+}
+.chart-bar {
+  height: 100%; border-radius: 99px; width: 0%;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+.chart-pct {
+  width: 40px; font-family: var(--font-mono);
+  font-size: 0.75rem; color: rgba(255,255,255,0.4);
+}
+
+/* ── EXPERIENCE ───────────────────────────────────────────────── */
+.exp-timeline { position: relative; padding-left: 2rem; }
+.exp-timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.exp-item {
+  position: relative; margin-bottom: 2.5rem;
+  opacity: 0; transform: translateX(-20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.exp-item.visible { opacity: 1; transform: translateX(0); }
+.exp-item::before {
+  content: ''; position: absolute; left: -2.5rem; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(0,212,255,0.15);
+}
+.exp-header { margin-bottom: 0.6rem; }
+.exp-role {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1rem; color: var(--white);
+}
+.exp-org {
+  font-size: 0.85rem; color: var(--teal2); margin-top: 2px;
+}
+.exp-meta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  margin-top: 4px;
+}
+.exp-date, .exp-loc {
+  font-size: 0.75rem; color: rgba(255,255,255,0.35);
+  font-family: var(--font-mono);
+}
+.exp-bullets {
+  list-style: none; margin-top: 0.6rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.exp-bullets li {
+  font-size: 0.83rem; color: rgba(255,255,255,0.55);
+  line-height: 1.5; padding-left: 1rem; position: relative;
+}
+.exp-bullets li::before {
+  content: '›'; position: absolute; left: 0;
+  color: var(--accent); font-weight: 700;
+}
+
+/* ── SKILLS ───────────────────────────────────────────────────── */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 1.4rem;
+}
+.skill-cat {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 1.6rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.skill-cat.visible { opacity: 1; transform: translateY(0); }
+.skill-cat h3 {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 0.9rem;
+  color: var(--accent); margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.3rem 0.75rem; border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.09);
+  transition: var(--transition);
+}
+.chip:hover {
+  background: rgba(0,212,255,0.1);
+  border-color: rgba(0,212,255,0.3);
+  color: var(--accent);
+}
+
+/* ── CONTACT ──────────────────────────────────────────────────── */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: center;
+}
+.contact-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 2rem;
+}
+.contact-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.contact-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.contact-info .lbl {
+  font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.35);
+  font-weight: 600;
+}
+.contact-info .val {
+  font-size: 0.9rem; color: var(--white); margin-top: 2px;
+  word-break: break-all;
+}
+.contact-right p {
+  font-size: 0.95rem; line-height: 1.85;
+  color: rgba(255,255,255,0.6); margin-bottom: 1.2rem;
+}
+.contact-flags {
+  display: flex; gap: 0.6rem; flex-wrap: wrap;
+}
+.flag-badge {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.4rem 0.9rem;
+  font-size: 0.75rem; color: rgba(255,255,255,0.6);
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer {
+  position: relative; z-index: 1;
+  background: #080f1e;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8rem; color: rgba(255,255,255,0.2);
+}
+footer a { color: var(--accent); }
+
+/* ── ANIMATIONS ───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; } to { opacity:1; }
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: repeat(2,1fr); }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(15,27,53,0.98);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 999;
+  }
+  .chart-label { width: 120px; font-size: 0.72rem; }
+}
+@media (max-width: 600px) {
+  section { padding: 70px 1.2rem; }
+  .metrics-grid { grid-template-columns: repeat(2,1fr); }
+  .hero h1 { font-size: 2.4rem; }
+}
+
+/* ── PROGRESS BAR ─────────────────────────────────────────────── */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+  z-index: 2000; width: 0%; transition: width 0.1s linear;
+}
+</style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-brand">Nafeez<span>.Rahman</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#patents">Patents</a></li>
+    <li><a href="#metrics">Impact</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">PhD Candidate · IEEE Member Since 2012</div>
+    <h1>Md. <span class="accent">Nafeez</span> Rahman</h1>
+    <p class="hero-title">
+      <strong>AI-Driven Battery Intelligence</strong> · Solar PV Design · Power Electronics<br/>
+      Ufa University of Science &amp; Technology, Russia
+    </p>
+    <p class="hero-tagline">
+      Building the mind inside the battery — teaching machines, converters, and grid systems
+      to anticipate energy needs before they arise. From Bangladesh to Sweden to Russia, one question drives everything:
+      <em>how do we make renewable energy reliably intelligent?</em>
+    </p>
+    <div class="hero-stats">
+      <div class="stat-pill"><span class="num" data-target="23">0</span><span class="lbl">Publications</span></div>
+      <div class="stat-pill"><span class="num" data-target="5">0</span><span class="lbl">Patents</span></div>
+      <div class="stat-pill"><span class="num" data-target="11">0</span><span class="lbl">IEEE Papers</span></div>
+      <div class="stat-pill"><span class="num" data-target="10">0</span><span class="lbl">Year Span</span></div>
+      <div class="stat-pill"><span class="num" data-target="6">0</span><span class="lbl">Countries</span></div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#publications" class="btn-primary">View Publications</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-mid" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2 class="section-title">The researcher who builds the mind inside the battery.</h2>
+        <div class="section-divider"></div>
+        <p>Md. Nafeez Rahman is a PhD candidate at <strong>Ufa University of Science and Technology (UUST)</strong>, Russia, where he also serves as Head of the Servo Motor Laboratory under the Advanced Engineering School — Motors for the Future.</p>
+        <p>His research sits at the intersection of <strong>AI-driven battery management</strong>, solar PV infrastructure design, and precision power electronics. He is the creator of the <strong>NeuroBatt ecosystem</strong> — five Russian Federal patents covering battery classification, life prediction, and autonomous swarm energy management for UAV and robotic platforms.</p>
+        <p>A recipient of the <strong>Russian Government Scholarship twice consecutively</strong> (MSc 2022–2024, PhD 2024–2028), he graduated with the highest academic honour: a <strong>RED DIPLOM</strong> (97%). His 23 publications span IEEE, Scopus Q1, Springer Nature, and SPIE, across 9+ countries of publication.</p>
+        <p>The international arc — <strong>Bangladesh → Sweden → Russia → Global</strong> — is not incidental. It is the research strategy.</p>
+      </div>
+      <div class="about-timeline">
+        <div class="timeline-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="yr">2024–2028</div>
+            <div class="role">PhD — Electrotechnical Complexes &amp; Systems</div>
+            <div class="org">UUST, Ufa, Russia · Russian Govt. Scholarship · RED Scholar</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="yr">2022–2024</div>
+            <div class="role">MSc — Electrical &amp; Power Engineering · RED DIPLOM (97%)</div>
+            <div class="org">UUST, Ufa, Russia · Russian Govt. Scholarship</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="yr">2010–2014</div>
+            <div class="role">BSc — Electrical &amp; Electronic Engineering (CGPA 3.51/4.00)</div>
+            <div class="org">AIUB, Dhaka, Bangladesh</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:var(--teal2);"></div>
+          <div class="tl-content">
+            <div class="yr">Dec 2025–Present</div>
+            <div class="role">Editorial Board Member &amp; Reviewer</div>
+            <div class="org">Unconventional Resources Journal, Elsevier</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:var(--gold);"></div>
+          <div class="tl-content">
+            <div class="yr">Jan 2012–Present</div>
+            <div class="role">IEEE Graduate Student Member (continuous)</div>
+            <div class="org">14-year professional membership · pre-dates BSc graduation</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:var(--green);"></div>
+          <div class="tl-content">
+            <div class="yr">Diplomas</div>
+            <div class="role">Skoltech ML · Skolkovo R&D Management</div>
+            <div class="org">Moscow, Russia · IEB Associate Member, Bangladesh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH THEMES -->
+<section class="section-dark" id="research">
+  <div class="container">
+    <div class="section-label">Research</div>
+    <h2 class="section-title">Five Research Themes</h2>
+    <div class="section-divider"></div>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <div class="theme-icon" style="background:rgba(0,212,255,0.1);">🧠</div>
+        <h3>Teaching Machines to Understand Battery Health</h3>
+        <p>Random Forest SoC prediction (MAE = 8.31%), NeuroBatt Classifier & Predictor, CNN-LSTM for temporal health modelling. The deepest and most patent-dense strand — bridging electrochemistry and edge AI.</p>
+        <div class="theme-tags">
+          <span class="tag">RF Regressor</span>
+          <span class="tag">CNN-LSTM</span>
+          <span class="tag">NeuroBatt</span>
+          <span class="tag">SoC/SoH</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:rgba(0,180,100,0.12);">☀️</div>
+        <h3>Solar Intelligence: From Parking Lot to Power Grid</h3>
+        <p>150 kW DC PV station design at Ufa Airport; seasonal adaptive sizing (233 kWh summer / 200 kWh winter); techno-economic LCOE/NPV/IRR analysis. Designed for real infrastructure, not theory.</p>
+        <div class="theme-tags">
+          <span class="tag">PV Design</span>
+          <span class="tag">LCOE</span>
+          <span class="tag">Seasonal Sizing</span>
+          <span class="tag">Airport EV</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:rgba(0,137,158,0.15);">🔋</div>
+        <h3>Second Life, First Priority</h3>
+        <p>RL agent for second-life EV battery grid buffering (reward converges –60 to –70 after 1000 episodes); ARIMA-SLSQP real-time dispatch; 60.7 t CO₂ saved per electric bus annually.</p>
+        <div class="theme-tags">
+          <span class="tag">RL Dispatch</span>
+          <span class="tag">ARIMA</span>
+          <span class="tag">2nd-Life BESS</span>
+          <span class="tag">CO₂ Impact</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:rgba(212,160,23,0.15);">⚡</div>
+        <h3>Precision Power Electronics for the Electric Age</h3>
+        <p>Phase-current balancing in multiphase DC converters (Scopus Q1); variable-input buck converter design; PLC for EV networks; HTS motor propulsion for electric aircraft. The mathematical foundation of everything above.</p>
+        <div class="theme-tags">
+          <span class="tag">Multiphase DC</span>
+          <span class="tag">Phase Balancing</span>
+          <span class="tag">Aircraft Power</span>
+          <span class="tag">Scopus Q1</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:rgba(139,26,47,0.15);">🌍</div>
+        <h3>Field-to-Formula: Real World to Academic Rigour</h3>
+        <p>Rural Bangladesh net-zero hybrid systems; garment industry solar-diesel optimisation; Russian EV market policy review; early bioelectrochemistry — the biographical thread connecting where he comes from to what he solves.</p>
+        <div class="theme-tags">
+          <span class="tag">Bangladesh Solar</span>
+          <span class="tag">Rural Grids</span>
+          <span class="tag">EV Policy</span>
+          <span class="tag">Net-Zero</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section-mid" id="publications">
+  <div class="container">
+    <div class="section-label">Publications</div>
+    <h2 class="section-title">23 Peer-Reviewed Works</h2>
+    <div class="section-divider"></div>
+    <div class="pub-filters">
+      <button class="filter-btn active" onclick="filterPubs('all',this)">All</button>
+      <button class="filter-btn" onclick="filterPubs('ieee',this)">IEEE</button>
+      <button class="filter-btn" onclick="filterPubs('scopus',this)">Scopus</button>
+      <button class="filter-btn" onclick="filterPubs('springer',this)">Springer</button>
+      <button class="filter-btn" onclick="filterPubs('patent',this)">Patents</button>
+      <button class="filter-btn" onclick="filterPubs('other',this)">Other</button>
+    </div>
+    <div class="pub-list" id="pubList">
+
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2026</span></div>
+        <div class="pub-title">Deep Neural Networks for Real-Time Battery Degradation Assessment and Classification</div>
+        <div class="pub-venue">IEEE ICECIE 2026, Thailand · Rahman et al.</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2026</span></div>
+        <div class="pub-title">Adaptive Battery Control in PV Systems using Deep Learning and Swarm Intelligence Algorithms</div>
+        <div class="pub-venue">IEEE REPE 2026, China · Rahman et al.</div>
+      </div>
+      <div class="pub-item" data-type="other">
+        <div class="pub-meta"><span class="pub-badge badge-other">SPIE</span><span class="pub-year">2025</span></div>
+        <div class="pub-title">Artificial Intelligence in Solar Energy Integration for the Smart Grid: Progress, Possibilities, and Challenges</div>
+        <div class="pub-venue">SPIE IVPAI 2025, Thailand · Rahman, Islam, Vavilov, Singh et al.</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2025</span><span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);">★ Most Cited</span></div>
+        <div class="pub-title">Dynamic Battery Storage Sizing for Solar Smart Grids: A Machine Learning Framework for Seasonal Demand Adaptation</div>
+        <div class="pub-venue">IEEE ECAI 2025, Romania · DOI: 10.1109/ECAI65401.2025.11095461 · MAE = 8.31% · 233 kWh / 200 kWh</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2025</span></div>
+        <div class="pub-title">Real-Time Energy Management in Microgrids Using ARIMA Price Forecasting and SLSQP Optimization</div>
+        <div class="pub-venue">IEEE icSmartGrid 2025, UK · CNN-LSTM, XGBoost, Gradient Boosting, ARIMA, SLSQP · Training loss 1700→&lt;100 in 50 epochs</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2025</span></div>
+        <div class="pub-title">Dynamic Grid Buffering with Second-Life EV Batteries: A Reinforcement Learning Optimization Approach</div>
+        <div class="pub-venue">IEEE GPECOM 2025, Germany · RL reward converges –60 to –70 after 1000 episodes</div>
+      </div>
+      <div class="pub-item" data-type="springer">
+        <div class="pub-meta"><span class="pub-badge badge-springer">Springer</span><span class="pub-year">2025</span></div>
+        <div class="pub-title">Evaluation of the Potential Grid Integration System for City Electric Buses at Ufa International Airport</div>
+        <div class="pub-venue">Springer Nature — HEREM 2024, Singapore · 60.7 t CO₂/yr per bus · 86,000 t city-wide projection</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2024</span></div>
+        <div class="pub-title">Designing of Solar Photovoltaic Parking Infrastructure at Ufa International Airport — A Case Study on EV Charging Potential</div>
+        <div class="pub-venue">IEEE REPE 2024, China · 150 kW DC Solar PV Station Design</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2024</span></div>
+        <div class="pub-title">Techno-economic Feasibility Analysis for EV Solar Charging Station at Ufa International Airport — A Comparative Case Study</div>
+        <div class="pub-venue">IEEE ECAI 2024, Romania · CAPEX/OPEX/NPV/IRR comparative analysis</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2024</span></div>
+        <div class="pub-title">Transition to Electric Vehicle Charging Station Market — A Review in Russian Context</div>
+        <div class="pub-venue">IEEE ICAIGE 2024, Tunisia · Rahman, Musin</div>
+      </div>
+      <div class="pub-item" data-type="scopus">
+        <div class="pub-meta"><span class="pub-badge badge-scopus">Scopus</span><span class="pub-year">2024</span></div>
+        <div class="pub-title">Methods of Balancing Phase Currents in Multiphase Step-Down DC Converters</div>
+        <div class="pub-venue">Russian Electrical Engineering, Springer Nature, Vol. 94, pp. 906–912 · Rahman, Farrakhov</div>
+      </div>
+      <div class="pub-item" data-type="scopus">
+        <div class="pub-meta"><span class="pub-badge badge-scopus">Scopus Q1</span><span class="pub-year">2024</span></div>
+        <div class="pub-title">Methods of Balancing Phase Currents in Multiphase DC Converters (МЕТОД БАЛАНСИРОВКИ...)</div>
+        <div class="pub-venue">Elektrotekhnika — Scopus Q1 Journal, Russia · Rahman, Farrakhov</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2023</span></div>
+        <div class="pub-title">Designing of Variable Input Multiphase Buck Converter with Efficient Phase Current Balancing Technique</div>
+        <div class="pub-venue">IEEE SIELMEN 2023, Romania · Rahman, Farrakhov, Vavilov</div>
+      </div>
+      <div class="pub-item" data-type="springer">
+        <div class="pub-meta"><span class="pub-badge badge-springer">Springer</span><span class="pub-year">2021</span></div>
+        <div class="pub-title">A Study on Electrochemical Characterizations of Bryophyllum pinnatum Leaf Electricity</div>
+        <div class="pub-venue">Springer Nature — Advances in Medical Physics, Lecture Notes in Bioengineering, Singapore</div>
+      </div>
+      <div class="pub-item" data-type="other">
+        <div class="pub-meta"><span class="pub-badge badge-other">Journal</span><span class="pub-year">2019</span></div>
+        <div class="pub-title">Design of a Power System (Solar-Diesel Generator) for a Garment Industry and Load Optimization</div>
+        <div class="pub-venue">International Journal of Engineering Applied Sciences and Technology, India</div>
+      </div>
+      <div class="pub-item" data-type="other">
+        <div class="pub-meta"><span class="pub-badge badge-other">J-STAGE</span><span class="pub-year">2019</span></div>
+        <div class="pub-title">Experimental Investigations in pH Behavior and Cell Potential of Bryophyllum pinnatum Solution</div>
+        <div class="pub-venue">Grand Renewable Energy 2018 Proceedings, Japan Council for Renewable Energy</div>
+      </div>
+      <div class="pub-item" data-type="springer">
+        <div class="pub-meta"><span class="pub-badge badge-springer">Springer</span><span class="pub-year">2018</span></div>
+        <div class="pub-title">Sustainability Analysis of Net Zero Emission Smart Renewable Hybrid System Solution in Bangladesh Rural Context</div>
+        <div class="pub-venue">Springer Nature — Transition Towards 100% Renewable Energy, Switzerland</div>
+      </div>
+      <div class="pub-item" data-type="ieee">
+        <div class="pub-meta"><span class="pub-badge badge-ieee">IEEE</span><span class="pub-year">2016</span></div>
+        <div class="pub-title">Designing of an Optimised Building Integrated Hybrid Energy Generation System</div>
+        <div class="pub-venue">IEEE ICDRET 2016, Bangladesh · First IEEE publication</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATENTS -->
+<section class="section-dark" id="patents">
+  <div class="container">
+    <div class="section-label">Intellectual Property</div>
+    <h2 class="section-title">The NeuroBatt Ecosystem</h2>
+    <div class="section-divider"></div>
+    <p style="max-width:680px;color:rgba(255,255,255,0.55);font-size:0.92rem;line-height:1.8;margin-bottom:2.5rem;">
+      Five Russian Federal patents registered 2024–2025 form a complete AI battery management architecture: Classify → Predict → Swarm. From the MSc-era aircraft BESS foundation to UAV and robotic fleet deployment — a commercially mature IP portfolio at TRL 4–5.
+    </p>
+    <div class="patents-grid">
+      <div class="patent-card">
+        <div class="patent-num">#2024611224</div>
+        <div class="patent-name">Energy Storage Optimisation Software for Electric Aircraft</div>
+        <div class="patent-desc">MSc thesis foundation. Establishes the core algorithmic approach for ML-driven BESS optimisation in aircraft — the most demanding latency and safety environment in energy storage.</div>
+        <span class="patent-year">2024 · Co-inventor: Farrakhov</span>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num">#2025662313</div>
+        <div class="patent-name">NeuroBatt Classifier</div>
+        <div class="patent-desc">Real-time AI-based battery health classification system. Issued 20 May 2025. Diagnoses battery condition from operational signatures — the diagnostic layer of the NeuroBatt suite.</div>
+        <span class="patent-year">2025 · Co-inventors: Rinatovich, Airatovich</span>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num">#2025663309</div>
+        <div class="patent-name">NeuroBatt Predictor</div>
+        <div class="patent-desc">AI-based battery life prediction system. Issued 27 May 2025. Projects remaining useful life distribution from current state and usage scenario — the prognostic layer.</div>
+        <span class="patent-year">2025 · Co-inventors: Rinatovich, Airatovich</span>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num">#2025664643</div>
+        <div class="patent-name">NeuroBatt Swarm — UAV Battery</div>
+        <div class="patent-desc">Applies the Classifier-Predictor pipeline to UAV fleet energy management. Optimises collective mission duration across swarm energy allocation — the autonomous deployment layer.</div>
+        <span class="patent-year">2025 · Co-inventors: Rinatovich, Airatovich</span>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num">#2025664801</div>
+        <div class="patent-name">NeuroBatt Swarm — Robotic Complex</div>
+        <div class="patent-desc">Extends NeuroBatt intelligence to robotic manufacturing and autonomous systems. Multi-agent battery coordination for industrial robotics — the commercial deployment platform.</div>
+        <span class="patent-year">2025 · Co-inventors: Rinatovich, Airatovich</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="section-mid" id="metrics">
+  <div class="container">
+    <div class="section-label">Impact</div>
+    <h2 class="section-title">Research Impact Dashboard</h2>
+    <div class="section-divider"></div>
+    <div class="metrics-grid">
+      <div class="metric-box"><div class="metric-number" data-target="23">0</div><div class="metric-label">Publications</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="5">0</div><div class="metric-label">Patents</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="11">0</div><div class="metric-label">IEEE Papers</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="87">0</div><div class="metric-label">% Lead Author</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="10">0</div><div class="metric-label">Year Span</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="20">0</div><div class="metric-label">Co-Authors</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="9">0</div><div class="metric-label">Countries</div></div>
+      <div class="metric-box"><div class="metric-number" data-target="2">0</div><div class="metric-label">Govt. Scholarships</div></div>
+    </div>
+
+    <div class="chart-bar-container">
+      <h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:1.5rem;color:rgba(255,255,255,0.7);">Thematic Distribution of Research Output</h3>
+      <div class="chart-row">
+        <div class="chart-label">AI / ML for Battery &amp; Energy</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" data-width="35" style="background:linear-gradient(90deg,var(--accent),var(--teal));"></div></div>
+        <div class="chart-pct">35%</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label">Solar PV Systems</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" data-width="25" style="background:linear-gradient(90deg,#27ae60,#2ecc71);"></div></div>
+        <div class="chart-pct">25%</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label">Power Electronics</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" data-width="20" style="background:linear-gradient(90deg,var(--gold),#e8c45a);"></div></div>
+        <div class="chart-pct">20%</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label">EV Infrastructure</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" data-width="15" style="background:linear-gradient(90deg,var(--teal),var(--teal2));"></div></div>
+        <div class="chart-pct">15%</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label">Bioelectrochemistry / Other</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" data-width="5" style="background:linear-gradient(90deg,var(--burgundy),#e87a8a);"></div></div>
+        <div class="chart-pct">5%</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.4rem;">
+        <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.8rem;font-weight:700;">Recognition</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🎓 Russian Govt. Scholarship ×2 (consecutive)</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🏅 MSc RED DIPLOM — 97% (top 1%)</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">📋 Elsevier Editorial Board (Dec 2025)</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🏛️ IEEE Member since January 2012</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">⚙️ 5 Patents in 2 years (2024–2025)</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🎓 Skoltech ML Diploma · Skolkovo R&D Diploma</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.4rem;">
+        <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal2);margin-bottom:0.8rem;font-weight:700;">Collaboration Network</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🌐 UUST Russia · AIT Thailand · UTP Malaysia</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🌐 AIUB Bangladesh · Solarus Sweden</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">👥 20+ unique named co-authors</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">📍 Publication venues: 9+ countries</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🌏 Bangladesh → Sweden → Russia → Global</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.4rem;">
+        <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.8rem;font-weight:700;">Key Results</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">⚡ MAE = 8.31% SoC prediction (RF)</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">☀️ 233 kWh summer / 200 kWh winter optimal</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🌿 60.7 t CO₂/yr saved per e-bus</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">🤖 RL agent: stable –60 to –70 reward</li>
+          <li style="font-size:0.82rem;color:rgba(255,255,255,0.6);">📉 Loss: 1700 → &lt;100 in 50 epochs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section-dark" id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Professional Timeline</h2>
+    <div class="section-divider"></div>
+    <p style="color:rgba(255,255,255,0.45);font-size:0.85rem;margin-bottom:3rem;">Total: 6 years 4 months 28 days · Bangladesh · Sweden · Russia</p>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Engineer I (Research &amp; Teaching) · Head of Servo Motor Laboratory</div>
+          <div class="exp-org">UUST Advanced Engineering School — Motors for the Future</div>
+          <div class="exp-meta">
+            <span class="exp-date">Dec 2023 – Jun 2025 · 1 yr 6 mo 13 d</span>
+            <span class="exp-loc">📍 Ufa, Russia · Government</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed 150 kW DC solar PV fast-charging station at Ufa International Airport (layout, inverters, cabling, grid connection, techno-economic analysis)</li>
+          <li>Led NeuroBatt AI battery research; filed 4 Russian Federal patents on PhD thesis</li>
+          <li>Supervised laboratory engineers; coordinated with procurement and technical office teams</li>
+          <li>Taught MATLAB numerical analysis; seminars on EV power distribution and PLC networks</li>
+          <li>Authored 10 IEEE/Scopus publications during this role</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Engineer II — Power Converter Research</div>
+          <div class="exp-org">UUST Department of Power Converter Research</div>
+          <div class="exp-meta">
+            <span class="exp-date">May 2023 – Dec 2023 · 6 mo 17 d</span>
+            <span class="exp-loc">📍 Ufa, Russia · Government</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Published phase-current balancing methodology in Scopus Q1 (Elektrotekhnika 2024) and Springer Nature</li>
+          <li>Multiphase DC-DC buck converter R&amp;D and IEEE SIELMEN 2023 paper</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Engineer — Scientific Department of Electronic Design</div>
+          <div class="exp-org">UUST Faculty of Advanced Engineering School</div>
+          <div class="exp-meta">
+            <span class="exp-date">Dec 2022 – May 2023 · 5 mo 19 d</span>
+            <span class="exp-loc">📍 Ufa, Russia · Government</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>PLC technology for EV communication networks; power electronics R&amp;D and prototype validation</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Electronics Design Engineer</div>
+          <div class="exp-org">OOO "ETK"</div>
+          <div class="exp-meta">
+            <span class="exp-date">Mar 2022 – Dec 2022 · 8 mo 22 d</span>
+            <span class="exp-loc">📍 Ufa, Russia · Private</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>PCB schematic design, power converter prototyping, subcontractor coordination, component procurement</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Assistant Engineer (Electrical)</div>
+          <div class="exp-org">Prokaushal Upodesta Limited (PUL)</div>
+          <div class="exp-meta">
+            <span class="exp-date">Sep 2019 – Apr 2020 · 7 mo 21 d</span>
+            <span class="exp-loc">📍 Dhaka, Bangladesh · Private</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Site inspection, procurement, drawings compliance, subcontractor management, progress reporting</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Trainee Engineer (Electrical)</div>
+          <div class="exp-org">O&amp;M Solutions Bangladesh Limited</div>
+          <div class="exp-meta">
+            <span class="exp-date">Mar 2018 – Sep 2019 · 1 yr 5 mo 26 d</span>
+            <span class="exp-loc">📍 Dhaka, Bangladesh · Private</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Field O&amp;M, HSE compliance enforcement, commissioning support, daily progress reports to project management</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Trainee — Hybrid Solar PV-Thermal Systems</div>
+          <div class="exp-org">Solarus Sunpower AB</div>
+          <div class="exp-meta">
+            <span class="exp-date">Apr 2016 – Sep 2016 · 6 mo</span>
+            <span class="exp-loc">📍 Gävle, Sweden · Private</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>MaReCo, ACC (Active Cell Cooling), WBT (Winter Boost Technology) hybrid PV-thermal system installation and commissioning</li>
+          <li>First international solar PV field exposure — the catalytic experience that defined the research direction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section-mid" id="skills">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>🤖 AI / Machine Learning</h3>
+        <div class="skill-chips">
+          <span class="chip">Random Forest</span><span class="chip">CNN-LSTM</span>
+          <span class="chip">XGBoost</span><span class="chip">Gradient Boosting</span>
+          <span class="chip">Deep Neural Networks</span><span class="chip">Reinforcement Learning</span>
+          <span class="chip">ARIMA Forecasting</span><span class="chip">Swarm Intelligence</span>
+          <span class="chip">Federated Learning</span><span class="chip">Physics-Informed NN</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>☀️ Solar PV & Energy Systems</h3>
+        <div class="skill-chips">
+          <span class="chip">PV System Design</span><span class="chip">Seasonal Sizing</span>
+          <span class="chip">LCOE / NPV / IRR</span><span class="chip">Techno-economic Analysis</span>
+          <span class="chip">Grid Integration</span><span class="chip">EV Charging Infrastructure</span>
+          <span class="chip">HOMER Simulation</span><span class="chip">Smart Grid EMS</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>⚡ Power Electronics</h3>
+        <div class="skill-chips">
+          <span class="chip">Multiphase DC-DC Converters</span><span class="chip">Phase-Current Balancing</span>
+          <span class="chip">PCB Design</span><span class="chip">Battery Management Systems</span>
+          <span class="chip">Aircraft Power Systems</span><span class="chip">PLC for EV Networks</span>
+          <span class="chip">HTS Motor Modelling</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>💻 Software & Tools</h3>
+        <div class="skill-chips">
+          <span class="chip">MATLAB / Simulink</span><span class="chip">Python</span>
+          <span class="chip">TensorFlow / Keras</span><span class="chip">scikit-learn</span>
+          <span class="chip">NumPy / Pandas</span><span class="chip">LaTeX</span>
+          <span class="chip">Microsoft Office</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>🌍 Languages</h3>
+        <div class="skill-chips">
+          <span class="chip">English — C1 (All IEEE publications)</span>
+          <span class="chip">Bengali — C2 (Native)</span>
+          <span class="chip">Russian — B2 (Scopus Q1 published)</span>
+          <span class="chip">Arabic — A1</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>📋 Professional</h3>
+        <div class="skill-chips">
+          <span class="chip">IEEE Peer Reviewer</span><span class="chip">Elsevier Editorial Board</span>
+          <span class="chip">Lab Management</span><span class="chip">Team Supervision</span>
+          <span class="chip">Technical Documentation</span><span class="chip">HSE Compliance</span>
+          <span class="chip">Site Coordination</span><span class="chip">Academic Teaching</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-dark" id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-info">
+            <div class="lbl">Email</div>
+            <div class="val">nafeezrahman.du@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-info">
+            <div class="lbl">Mobile</div>
+            <div class="val">+880 1345 755 132</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🔬</div>
+          <div class="contact-info">
+            <div class="lbl">ResearchGate</div>
+            <div class="val">researchgate.net/profile/Md-Nafeez-Rahman</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏛️</div>
+          <div class="contact-info">
+            <div class="lbl">Institution</div>
+            <div class="val">Ufa University of Science &amp; Technology, Russia</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-info">
+            <div class="lbl">Current Location</div>
+            <div class="val">Dhaka, Bangladesh (remote PhD)</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <p>Open to <strong style="color:var(--accent)">research collaboration</strong>, academic positions, fellowship applications, and industry partnerships in battery AI, solar PV systems, and electric vehicle infrastructure.</p>
+        <p>The NeuroBatt patent suite is available for <strong style="color:var(--teal2)">technology transfer</strong> discussions with industrial partners in EV, UAV, robotics, and grid-edge storage sectors.</p>
+        <p>Available for <strong style="color:var(--gold)">peer review, editorial work</strong>, and conference programme committees in energy storage, power electronics, and AI-driven energy systems.</p>
+        <div class="contact-flags">
+          <div class="flag-badge">🇧🇩 Bangladesh</div>
+          <div class="flag-badge">🇷🇺 Russia</div>
+          <div class="flag-badge">🇸🇪 Sweden (exp.)</div>
+          <div class="flag-badge">🌐 Global Collaboration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:0.4rem;">
+    <strong style="color:rgba(255,255,255,0.5);">Md. Nafeez Rahman</strong> · PhD Candidate, UUST Russia · IEEE Member ·
+    <a href="mailto:nafeezrahman.du@gmail.com">nafeezrahman.du@gmail.com</a>
+  </p>
+  <p>© 2025 · Research Portfolio · Built with precision and powered by curiosity.</p>
+</footer>
+
+<script>
+// ── CANVAS PARTICLE BACKGROUND ─────────────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], lines = [];
+  const N_PARTICLES = 80;
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor(){
+      this.reset();
+    }
+    reset(){
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.vx = (Math.random()-0.5)*0.4;
+      this.vy = (Math.random()-0.5)*0.4;
+      this.r  = Math.random()*1.5+0.5;
+      this.opacity = Math.random()*0.5+0.1;
+      this.color = Math.random() > 0.6 ? '#00d4ff' : '#005b8e';
+    }
+    update(){
+      this.x += this.vx;
+      this.y += this.vy;
+      if(this.x < 0 || this.x > W) this.vx *= -1;
+      if(this.y < 0 || this.y > H) this.vy *= -1;
+    }
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle = this.color;
+      ctx.globalAlpha = this.opacity;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  for(let i=0;i<N_PARTICLES;i++) particles.push(new Particle());
+
+  function drawLines(){
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx = particles[i].x-particles[j].x;
+        const dy = particles[i].y-particles[j].y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < 120){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle = '#00d4ff';
+          ctx.globalAlpha = (1-dist/120)*0.12;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+      }
+    }
+  }
+
+  function animate(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{ p.update(); p.draw(); });
+    drawLines();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ── PROGRESS BAR ───────────────────────────────────────────────────────────
+window.addEventListener('scroll', function(){
+  const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progress-bar').style.width = scrolled + '%';
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── NAV TOGGLE ─────────────────────────────────────────────────────────────
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('nav')) document.getElementById('navLinks').classList.remove('open');
+});
+
+// ── COUNTER ANIMATION ──────────────────────────────────────────────────────
+function animateCounter(el, target){
+  let start = 0;
+  const duration = 1600;
+  const step = timestamp => {
+    if(!step.start) step.start = timestamp;
+    const progress = Math.min((timestamp - step.start) / duration, 1);
+    const ease = 1 - Math.pow(1-progress, 3);
+    el.textContent = Math.round(ease * target);
+    if(progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+
+// ── INTERSECTION OBSERVER ──────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    const el = entry.target;
+
+    if(el.classList.contains('timeline-item') ||
+       el.classList.contains('theme-card') ||
+       el.classList.contains('exp-item') ||
+       el.classList.contains('skill-cat') ||
+       el.classList.contains('pub-item') ||
+       el.classList.contains('patent-card') ||
+       el.classList.contains('metric-box')){
+      el.classList.add('visible');
+    }
+
+    // Counter
+    if(el.classList.contains('metric-number') || el.dataset.target){
+      const target = parseInt(el.dataset.target);
+      if(!isNaN(target)) animateCounter(el, target);
+    }
+
+    // Chart bars
+    if(el.classList.contains('chart-bar-container')){
+      el.querySelectorAll('.chart-bar').forEach(bar=>{
+        const w = bar.dataset.width;
+        setTimeout(()=>{ bar.style.width = w + '%'; }, 200);
+      });
+    }
+
+    observer.unobserve(el);
+  });
+}, { threshold: 0.15 });
+
+// Observe all animated elements
+const selectors = [
+  '.timeline-item','.theme-card','.exp-item','.skill-cat',
+  '.pub-item','.patent-card','.metric-box','.metric-number',
+  '[data-target]','.chart-bar-container',
+];
+selectors.forEach(sel=>{
+  document.querySelectorAll(sel).forEach(el=>observer.observe(el));
+});
+
+// Hero stat counters
+document.querySelectorAll('.hero-stats .num').forEach(el=>{
+  const target = parseInt(el.dataset.target);
+  setTimeout(()=> animateCounter(el,target), 600);
+});
+
+// ── PUB FILTER ─────────────────────────────────────────────────────────────
+function filterPubs(type, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-item').forEach(item=>{
+    const show = type === 'all' || item.dataset.type === type;
+    item.style.display = show ? 'block' : 'none';
+    if(show && !item.classList.contains('visible')){
+      setTimeout(()=>item.classList.add('visible'),50);
+    }
+  });
+}
+
+// ── SMOOTH SCROLL ──────────────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
